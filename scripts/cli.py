@@ -6,6 +6,7 @@ This tool provides convenient commands for starting, stopping, and testing
 the LDAP server, as well as managing test users and certificates.
 """
 
+import os
 import subprocess
 import sys
 import time
@@ -27,8 +28,8 @@ PROJECT_ROOT = Path(__file__).parent.parent
 CERTS_DIR = PROJECT_ROOT / "certs"
 LDIF_DIR = PROJECT_ROOT / "ldif"
 DEFAULT_HOST = "localhost"
-DEFAULT_PORT = 389
-DEFAULT_LDAPS_PORT = 636
+DEFAULT_PORT = int(os.environ.get("LDAP_PORT", "389"))
+DEFAULT_LDAPS_PORT = int(os.environ.get("LDAPS_PORT", "636"))
 DEFAULT_BASE_DN = "dc=testing,dc=local"
 DEFAULT_ADMIN_DN = "cn=admin,dc=testing,dc=local"
 DEFAULT_ADMIN_PASSWORD = "admin_password"

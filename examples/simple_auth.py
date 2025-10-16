@@ -11,6 +11,7 @@ Usage:
 """
 
 import argparse
+import os
 import sys
 from typing import Dict, List, Optional
 
@@ -24,7 +25,8 @@ except ImportError:
 
 
 # Configuration
-LDAP_SERVER = "ldap://localhost:389"
+LDAP_PORT = os.environ.get("LDAP_PORT", "389")
+LDAP_SERVER = f"ldap://localhost:{LDAP_PORT}"
 LDAP_BASE_DN = "dc=testing,dc=local"
 LDAP_PEOPLE_OU = "ou=people,dc=testing,dc=local"
 LDAP_GROUPS_OU = "ou=groups,dc=testing,dc=local"
@@ -104,8 +106,8 @@ class LDAPAuthenticator:
                     "first_name": str(entry.givenName) if entry.givenName else "",
                     "last_name": str(entry.sn),
                     "email": str(entry.mail),
-                    "uid_number": int(entry.uidNumber) if entry.uidNumber else None,
-                    "gid_number": int(entry.gidNumber) if entry.gidNumber else None,
+                    "uid_number": int(str(entry.uidNumber)) if entry.uidNumber else None,
+                    "gid_number": int(str(entry.gidNumber)) if entry.gidNumber else None,
                     "dn": entry.entry_dn,
                 }
                 conn.unbind()

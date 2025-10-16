@@ -86,9 +86,13 @@ logs/
 *.bak
 *.tmp
 
-# Environment files with secrets
+# Environment files
+# Note: .env is tracked and contains non-secret configuration (ports, etc.)
+# Add secrets only to .env.local which is ignored
 .env.local
 .env.*.local
+.env.production
+.env.development
 
 # MacOS
 .DS_Store

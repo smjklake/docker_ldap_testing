@@ -1,5 +1,11 @@
 .PHONY: help install init start stop restart down logs status certs-generate certs-check test-connection test-auth test-users clean clean-all
 
+# Load environment variables from .env file if it exists
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+endif
+
 # Default target
 .DEFAULT_GOAL := help
 
@@ -55,9 +61,9 @@ start:  ## Start the LDAP server
 	@echo "✅ LDAP server started"
 	@echo ""
 	@echo "Services available at:"
-	@echo "  - LDAP:  ldap://localhost:389"
-	@echo "  - LDAPS: ldaps://localhost:636"
-	@echo "  - Admin: http://localhost:8080"
+	@echo "  - LDAP:  ldap://localhost:$${LDAP_PORT:-389}"
+	@echo "  - LDAPS: ldaps://localhost:$${LDAPS_PORT:-636}"
+	@echo "  - Admin: http://localhost:$${PHPLDAPADMIN_PORT:-8080}"
 	@echo ""
 	@echo "Admin credentials:"
 	@echo "  DN: cn=admin,dc=testing,dc=local"
@@ -105,19 +111,19 @@ status:  ## Show container status
 
 test-connection:  ## Test connection to LDAP server
 	@echo "Testing LDAP connection..."
-	uv run python -c "from ldap3 import Server, Connection, ALL; s = Server('ldap://localhost:389', get_info=ALL); c = Connection(s, auto_bind=True); print('✅ Connection successful'); c.unbind()"
+	@export LDAP_PORT=$${LDAP_PORT:-389}; uv run python -c "import os; from ldap3 import Server, Connection, ALL; s = Server(f\"ldap://localhost:{os.environ.get('LDAP_PORT', '389')}\", get_info=ALL); c = Connection(s, auto_bind=True); print('✅ Connection successful'); c.unbind()"
 
 test-auth:  ## Test authentication with admin user
 	@echo "Testing LDAP authentication..."
-	uv run python -c "from ldap3 import Server, Connection; s = Server('ldap://localhost:389'); c = Connection(s, 'cn=admin,dc=testing,dc=local', 'admin_password', auto_bind=True); print('✅ Authentication successful'); c.unbind()"
+	@export LDAP_PORT=$${LDAP_PORT:-389}; uv run python -c "import os; from ldap3 import Server, Connection; s = Server(f\"ldap://localhost:{os.environ.get('LDAP_PORT', '389')}\"); c = Connection(s, 'cn=admin,dc=testing,dc=local', 'admin_password', auto_bind=True); print('✅ Authentication successful'); c.unbind()"
 
 test-users:  ## List all users in LDAP
 	@echo "Listing LDAP users..."
-	@uv run python -c "from ldap3 import Server, Connection; s = Server('ldap://localhost:389'); c = Connection(s, 'cn=admin,dc=testing,dc=local', 'admin_password', auto_bind=True); c.search('dc=testing,dc=local', '(objectClass=inetOrgPerson)', attributes=['uid', 'cn', 'mail']); [print(f'  - {e.cn}: {e.uid} ({e.mail})') for e in c.entries]; c.unbind()"
+	@export LDAP_PORT=$${LDAP_PORT:-389}; uv run python -c "import os; from ldap3 import Server, Connection; s = Server(f\"ldap://localhost:{os.environ.get('LDAP_PORT', '389')}\"); c = Connection(s, 'cn=admin,dc=testing,dc=local', 'admin_password', auto_bind=True); c.search('dc=testing,dc=local', '(objectClass=inetOrgPerson)', attributes=['uid', 'cn', 'mail']); [print(f'  - {e.cn}: {e.uid} ({e.mail})') for e in c.entries]; c.unbind()"
 
 test-ssl:  ## Test SSL/TLS connection
 	@echo "Testing LDAPS connection..."
-	openssl s_client -connect localhost:636 -CAfile certs/ca.crt </dev/null
+	openssl s_client -connect localhost:$${LDAPS_PORT:-636} -CAfile certs/ca.crt </dev/null
 
 test-all: test-connection test-auth test-users  ## Run all tests
 
@@ -126,7 +132,7 @@ shell:  ## Open a shell in the LDAP container
 
 ldapsearch:  ## Run ldapsearch command (example query)
 	@echo "Running ldapsearch..."
-	ldapsearch -H ldap://localhost:389 -x -b "dc=testing,dc=local" -D "cn=admin,dc=testing,dc=local" -w admin_password
+	ldapsearch -H ldap://localhost:$${LDAP_PORT:-389} -x -b "dc=testing,dc=local" -D "cn=admin,dc=testing,dc=local" -w admin_password
 
 clean:  ## Clean Python build artifacts
 	@echo "Cleaning build artifacts..."

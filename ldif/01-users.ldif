@@ -25,7 +25,7 @@ cn: John Doe
 sn: Doe
 givenName: John
 mail: jdoe@testing.local
-userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
 uidNumber: 10001
 gidNumber: 10001
 homeDirectory: /home/jdoe
@@ -42,7 +42,7 @@ cn: Jane Smith
 sn: Smith
 givenName: Jane
 mail: jsmith@testing.local
-userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
 uidNumber: 10002
 gidNumber: 10002
 homeDirectory: /home/jsmith
@@ -59,7 +59,7 @@ cn: Admin User
 sn: User
 givenName: Admin
 mail: admin@testing.local
-userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
 uidNumber: 10000
 gidNumber: 10000
 homeDirectory: /home/admin
@@ -76,7 +76,7 @@ cn: Test User
 sn: User
 givenName: Test
 mail: testuser@testing.local
-userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
 uidNumber: 10003
 gidNumber: 10003
 homeDirectory: /home/testuser
