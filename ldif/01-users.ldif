@@ -1,0 +1,109 @@
+# Sample LDIF file for testing.local domain
+# This file creates organizational units, users, and groups for testing
+
+# Create organizational units
+dn: ou=people,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: people
+description: Users in the testing organization
+
+dn: ou=groups,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+description: Groups in the testing organization
+
+# Create test users
+dn: uid=jdoe,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: jdoe
+cn: John Doe
+sn: Doe
+givenName: John
+mail: jdoe@testing.local
+userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+uidNumber: 10001
+gidNumber: 10001
+homeDirectory: /home/jdoe
+loginShell: /bin/bash
+description: Test user - John Doe
+
+dn: uid=jsmith,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: jsmith
+cn: Jane Smith
+sn: Smith
+givenName: Jane
+mail: jsmith@testing.local
+userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+uidNumber: 10002
+gidNumber: 10002
+homeDirectory: /home/jsmith
+loginShell: /bin/bash
+description: Test user - Jane Smith
+
+dn: uid=admin,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: admin
+cn: Admin User
+sn: User
+givenName: Admin
+mail: admin@testing.local
+userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+uidNumber: 10000
+gidNumber: 10000
+homeDirectory: /home/admin
+loginShell: /bin/bash
+description: Test administrator user
+
+dn: uid=testuser,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: testuser
+cn: Test User
+sn: User
+givenName: Test
+mail: testuser@testing.local
+userPassword: {SSHA}5en6G6MezRroT3XKqkdPOmY/BFQ= # password: password123
+uidNumber: 10003
+gidNumber: 10003
+homeDirectory: /home/testuser
+loginShell: /bin/bash
+description: Generic test user
+
+# Create test groups
+dn: cn=developers,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: developers
+description: Development team group
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+
+dn: cn=admins,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: admins
+description: Administrator group
+member: uid=admin,ou=people,dc=testing,dc=local
+
+dn: cn=users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: users
+description: General users group
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+member: uid=testuser,ou=people,dc=testing,dc=local

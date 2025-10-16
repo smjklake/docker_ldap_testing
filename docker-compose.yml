@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: ldap-server
+    hostname: ldap.testing.local
+    environment:
+      # Base domain configuration
+      LDAP_ORGANISATION: "Testing Organization"
+      LDAP_DOMAIN: "testing.local"
+      LDAP_BASE_DN: "dc=testing,dc=local"
+
+      # Admin credentials (change these for production)
+      LDAP_ADMIN_PASSWORD: "admin_password"
+      LDAP_CONFIG_PASSWORD: "config_password"
+
+      # SSL/TLS Configuration
+      LDAP_TLS: "true"
+      LDAP_TLS_CRT_FILENAME: "server.crt"
+      LDAP_TLS_KEY_FILENAME: "server.key"
+      LDAP_TLS_CA_CRT_FILENAME: "ca.crt"
+      LDAP_TLS_VERIFY_CLIENT: "try"
+
+      # Logging
+      LDAP_LOG_LEVEL: "256"
+
+    ports:
+      # Standard LDAP port
+      - "389:389"
+      # LDAPS (SSL) port
+      - "636:636"
+
+    volumes:
+      # Custom certificates - place your dev-ca certs here
+      - ./certs:/container/service/slapd/assets/certs:ro
+
+      # LDIF files for initial data population
+      - ./ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom:ro
+
+      # Persistent data storage
+      - ldap_data:/var/lib/ldap
+      - ldap_config:/etc/ldap/slapd.d
+
+    networks:
+      - ldap-network
+
+    restart: unless-stopped
+
+    command: --copy-service --loglevel debug
+
+  # Optional: phpLDAPadmin for web-based management
+  phpldapadmin:
+    image: osixia/phpldapadmin:0.9.0
+    container_name: ldap-admin
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: "openldap"
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - "8080:80"
+    depends_on:
+      - openldap
+    networks:
+      - ldap-network
+    restart: unless-stopped
+
+volumes:
+  ldap_data:
+    driver: local
+  ldap_config:
+    driver: local
+
+networks:
+  ldap-network:
+    driver: bridge
