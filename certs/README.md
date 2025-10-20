@@ -6,13 +6,13 @@ This directory should contain your SSL/TLS certificates for the LDAP server.
 
 The OpenLDAP container expects the following files in this directory:
 
-- `ca.crt` - Certificate Authority certificate (your dev-ca root certificate)
-- `server.crt` - Server certificate for ldap.testing.local
-- `server.key` - Private key for the server certificate
+- `ca.crt` - Certificate Authority certificate (your dev-ca root certificate) - filename: `{.env:LDAP_TLS_CA_CRT_FILENAME}`
+- `server.crt` - Server certificate for `{.env:LDAP_HOSTNAME}` - filename: `{.env:LDAP_TLS_CRT_FILENAME}`
+- `server.key` - Private key for the server certificate - filename: `{.env:LDAP_TLS_KEY_FILENAME}`
 
 ## Using Your Custom Dev-CA Certificates
 
-If you maintain your own dev-ca (as mentioned), simply copy your certificates here:
+If you maintain your own dev-ca, simply copy your certificates here:
 
 ```bash
 # Copy your dev-ca generated certificates to this directory
@@ -22,9 +22,9 @@ cp /path/to/your/dev-ca/ca-cert.pem ./ca.crt
 ```
 
 **Important Notes:**
-- The server certificate should be issued for the hostname `ldap.testing.local`
+- The server certificate should be issued for the hostname `{.env:LDAP_HOSTNAME}` (default: `ldap.testing.local`)
 - The certificate can also include SANs (Subject Alternative Names) like:
-  - `DNS:ldap.testing.local`
+  - `DNS:{.env:LDAP_HOSTNAME}`
   - `DNS:localhost`
   - `IP:127.0.0.1`
 - Ensure the private key is readable by the container (permissions should be 600 or 644)
@@ -46,13 +46,13 @@ openssl req -new -x509 -days 3650 -key ca.key -out ca.crt \
 # Generate server private key
 openssl genrsa -out server.key 4096
 
-# Generate server certificate signing request
+# Generate server certificate signing request (use your LDAP_HOSTNAME value)
 openssl req -new -key server.key -out server.csr \
-  -subj "/C=US/ST=State/L=City/O=Testing Org/CN=ldap.testing.local"
+  -subj "/C=US/ST=State/L=City/O=Testing Org/CN={.env:LDAP_HOSTNAME}"
 
-# Create extensions file for SAN
+# Create extensions file for SAN (use your LDAP_HOSTNAME value)
 cat > server-ext.cnf <<EOF
-subjectAltName = DNS:ldap.testing.local,DNS:localhost,IP:127.0.0.1
+subjectAltName = DNS:{.env:LDAP_HOSTNAME},DNS:localhost,IP:127.0.0.1
 extendedKeyUsage = serverAuth,clientAuth
 EOF
 
@@ -104,12 +104,12 @@ openssl rsa -noout -modulus -in server.key | openssl md5
 Once the container is running with your certificates:
 
 ```bash
-# Test LDAPS connection (port 636)
-openssl s_client -connect localhost:636 -CAfile certs/ca.crt
+# Test LDAPS connection
+openssl s_client -connect localhost:{.env:LDAPS_PORT} -CAfile certs/ca.crt
 
 # Test with ldapsearch
-ldapsearch -H ldaps://localhost:636 -x -b "dc=testing,dc=local" \
-  -D "cn=admin,dc=testing,dc=local" -w admin_password
+ldapsearch -H ldaps://localhost:{.env:LDAPS_PORT} -x -b "{.env:LDAP_BASE_DN}" \
+  -D "cn=admin,{.env:LDAP_BASE_DN}" -w {.env:LDAP_ADMIN_PASSWORD}
 ```
 
 ## Troubleshooting
@@ -117,7 +117,7 @@ ldapsearch -H ldaps://localhost:636 -x -b "dc=testing,dc=local" \
 ### Certificate Errors
 
 If you see TLS/SSL errors in the logs:
-1. Verify the certificate hostname matches `ldap.testing.local`
+1. Verify the certificate hostname matches `{.env:LDAP_HOSTNAME}` (default: `ldap.testing.local`)
 2. Check that all three files are present and readable
 3. Ensure the server certificate is signed by the CA
 4. Check certificate expiration dates

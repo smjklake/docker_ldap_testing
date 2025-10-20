@@ -9,7 +9,7 @@ For production, use proper certificates from your dev-ca or a trusted CA.
 import argparse
 import ipaddress
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -17,7 +17,7 @@ try:
     from cryptography.hazmat.backends import default_backend
     from cryptography.hazmat.primitives import hashes, serialization
     from cryptography.hazmat.primitives.asymmetric import rsa
-    from cryptography.x509.oid import ExtensionOID, NameOID
+    from cryptography.x509.oid import ExtendedKeyUsageOID, NameOID
 except ImportError:
     print("Error: cryptography library not found.")
     print("Install it with: uv pip install cryptography")
@@ -55,8 +55,8 @@ def generate_ca_certificate(
         .issuer_name(issuer)
         .public_key(private_key.public_key())
         .serial_number(x509.random_serial_number())
-        .not_valid_before(datetime.utcnow())
-        .not_valid_after(datetime.utcnow() + timedelta(days=days_valid))
+        .not_valid_before(datetime.now(timezone.utc))
+        .not_valid_after(datetime.now(timezone.utc) + timedelta(days=days_valid))
         .add_extension(
             x509.BasicConstraints(ca=True, path_length=None),
             critical=True,
@@ -90,7 +90,7 @@ def generate_server_certificate(
     ca_cert: x509.Certificate,
     ca_key: rsa.RSAPrivateKey,
     hostname: str = "ldap.testing.local",
-    san_list: list[str] = None,
+    san_list: list[str] | None = None,
     days_valid: int = 365,
 ) -> x509.Certificate:
     """Generate a server certificate signed by the CA."""
@@ -123,8 +123,8 @@ def generate_server_certificate(
         .issuer_name(ca_cert.subject)
         .public_key(private_key.public_key())
         .serial_number(x509.random_serial_number())
-        .not_valid_before(datetime.utcnow())
-        .not_valid_after(datetime.utcnow() + timedelta(days=days_valid))
+        .not_valid_before(datetime.now(timezone.utc))
+        .not_valid_after(datetime.now(timezone.utc) + timedelta(days=days_valid))
         .add_extension(
             x509.SubjectAlternativeName(san_entries),
             critical=False,
@@ -148,7 +148,7 @@ def generate_server_certificate(
             critical=True,
         )
         .add_extension(
-            x509.ExtendedKeyUsage([x509.ExtendedKeyUsageOID.SERVER_AUTH]),
+            x509.ExtendedKeyUsage([ExtendedKeyUsageOID.SERVER_AUTH]),
             critical=False,
         )
         .add_extension(
@@ -236,9 +236,7 @@ def main():
 
     # Check if certificates already exist
     if not args.force:
-        existing = [
-            p for p in [ca_cert_path, server_cert_path, server_key_path] if p.exists()
-        ]
+        existing = [p for p in [ca_cert_path, server_cert_path, server_key_path] if p.exists()]
         if existing:
             print("Error: The following certificate files already exist:")
             for p in existing:

@@ -1,4 +1,4 @@
-.PHONY: help install init start stop restart down logs status certs-generate certs-check test-connection test-auth test-users clean clean-all
+.PHONY: help install init start stop restart down logs status certs-generate certs-check verify-connection verify-auth verify-users verify-ssl verify-all test test-cov clean clean-all
 
 # Load environment variables from .env file if it exists
 ifneq (,$(wildcard ./.env))
@@ -15,7 +15,7 @@ help:  ## Show this help message
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Available targets:"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' Makefile | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 install:  ## Install Python dependencies with UV
 	@echo "Installing dependencies with UV..."
@@ -25,7 +25,7 @@ install:  ## Install Python dependencies with UV
 
 install-dev:  ## Install development dependencies
 	@echo "Installing development dependencies with UV..."
-	uv sync --all-extras
+	uv sync --group dev
 	@echo "✅ Development dependencies installed"
 
 init: install certs-check  ## Initialize the environment (install deps, check certs)
@@ -109,23 +109,33 @@ logs-admin:  ## View phpLDAPadmin logs
 status:  ## Show container status
 	@docker-compose ps
 
-test-connection:  ## Test connection to LDAP server
-	@echo "Testing LDAP connection..."
+verify-connection:  ## Verify connection to LDAP server (requires running container)
+	@echo "Verifying LDAP connection..."
 	@export LDAP_PORT=$${LDAP_PORT:-389}; uv run python -c "import os; from ldap3 import Server, Connection, ALL; s = Server(f\"ldap://localhost:{os.environ.get('LDAP_PORT', '389')}\", get_info=ALL); c = Connection(s, auto_bind=True); print('✅ Connection successful'); c.unbind()"
 
-test-auth:  ## Test authentication with admin user
-	@echo "Testing LDAP authentication..."
+verify-auth:  ## Verify authentication with admin user (requires running container)
+	@echo "Verifying LDAP authentication..."
 	@export LDAP_PORT=$${LDAP_PORT:-389}; uv run python -c "import os; from ldap3 import Server, Connection; s = Server(f\"ldap://localhost:{os.environ.get('LDAP_PORT', '389')}\"); c = Connection(s, 'cn=admin,dc=testing,dc=local', 'admin_password', auto_bind=True); print('✅ Authentication successful'); c.unbind()"
 
-test-users:  ## List all users in LDAP
+verify-users:  ## List all users in LDAP (requires running container)
 	@echo "Listing LDAP users..."
 	@export LDAP_PORT=$${LDAP_PORT:-389}; uv run python -c "import os; from ldap3 import Server, Connection; s = Server(f\"ldap://localhost:{os.environ.get('LDAP_PORT', '389')}\"); c = Connection(s, 'cn=admin,dc=testing,dc=local', 'admin_password', auto_bind=True); c.search('dc=testing,dc=local', '(objectClass=inetOrgPerson)', attributes=['uid', 'cn', 'mail']); [print(f'  - {e.cn}: {e.uid} ({e.mail})') for e in c.entries]; c.unbind()"
 
-test-ssl:  ## Test SSL/TLS connection
-	@echo "Testing LDAPS connection..."
+verify-ssl:  ## Verify SSL/TLS connection (requires running container)
+	@echo "Verifying LDAPS connection..."
 	openssl s_client -connect localhost:$${LDAPS_PORT:-636} -CAfile certs/ca.crt </dev/null
 
-test-all: test-connection test-auth test-users  ## Run all tests
+verify-all: verify-connection verify-auth verify-users  ## Run all verification checks (requires running container)
+
+test:  ## Run unit tests with pytest
+	@echo "Running unit tests..."
+	uv run pytest
+
+test-cov:  ## Run unit tests with coverage report
+	@echo "Running unit tests with coverage..."
+	uv run pytest --cov=scripts --cov-report=term-missing --cov-report=html
+	@echo ""
+	@echo "📊 Coverage report generated in htmlcov/index.html"
 
 shell:  ## Open a shell in the LDAP container
 	docker-compose exec openldap bash
@@ -141,7 +151,7 @@ clean:  ## Clean Python build artifacts
 	find . -type f -name "*.pyo" -delete 2>/dev/null || true
 	find . -type d -name "*.egg-info" -exec rm -rf {} + 2>/dev/null || true
 	find . -type d -name ".pytest_cache" -exec rm -rf {} + 2>/dev/null || true
-	find . -type d -name ".mypy_cache" -exec rm -rf {} + 2>/dev/null || true
+
 	find . -type d -name "htmlcov" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name ".coverage" -delete 2>/dev/null || true
 	rm -rf build/ dist/ .eggs/
@@ -158,8 +168,8 @@ dev-setup: install-dev certs-generate start  ## Complete development setup
 	@echo ""
 	@echo "Next steps:"
 	@echo "  - View logs: make logs"
-	@echo "  - Test connection: make test-connection"
-	@echo "  - List users: make test-users"
+	@echo "  - Verify connection: make verify-connection"
+	@echo "  - List users: make verify-users"
 	@echo "  - Open admin UI: open http://localhost:8080"
 
 quick-start: certs-check start  ## Quick start (assumes certs exist)

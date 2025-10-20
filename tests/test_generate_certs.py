@@ -5,8 +5,9 @@ This module contains unit tests for the generate_certs.py script.
 """
 
 import tempfile
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import TYPE_CHECKING, cast
 
 import pytest
 
@@ -14,18 +15,25 @@ try:
     from cryptography import x509
     from cryptography.hazmat.primitives import hashes
     from cryptography.hazmat.primitives.asymmetric import rsa
-    from cryptography.x509.oid import NameOID
+    from cryptography.x509 import BasicConstraints, SubjectAlternativeName
+    from cryptography.x509.oid import ExtensionOID, NameOID
 
     CRYPTO_AVAILABLE = True
 except ImportError:
     CRYPTO_AVAILABLE = False
+    if TYPE_CHECKING:
+        from cryptography import x509
+        from cryptography.hazmat.primitives import hashes
+        from cryptography.hazmat.primitives.asymmetric import rsa
+        from cryptography.x509 import BasicConstraints, SubjectAlternativeName
+        from cryptography.x509.oid import ExtensionOID, NameOID
 
 # Import the module to test
 import sys
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-if CRYPTO_AVAILABLE:
+if CRYPTO_AVAILABLE or TYPE_CHECKING:
     from scripts.generate_certs import (
         generate_ca_certificate,
         generate_private_key,
@@ -63,10 +71,8 @@ class TestCertificateGeneration:
         assert cert.subject == cert.issuer
 
         # Check basic constraints
-        basic_constraints = cert.extensions.get_extension_for_oid(
-            x509.ExtensionOID.BASIC_CONSTRAINTS
-        )
-        assert basic_constraints.value.ca is True
+        basic_constraints = cert.extensions.get_extension_for_oid(ExtensionOID.BASIC_CONSTRAINTS)
+        assert cast(BasicConstraints, basic_constraints.value).ca is True
 
     def test_generate_ca_certificate_validity(self):
         """Test that CA certificate has correct validity period."""
@@ -74,11 +80,11 @@ class TestCertificateGeneration:
         days_valid = 365
         cert = generate_ca_certificate(key, days_valid=days_valid)
 
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         expected_expiry = now + timedelta(days=days_valid)
 
         # Allow 1 minute tolerance for test execution time
-        assert abs((cert.not_valid_after - expected_expiry).total_seconds()) < 60
+        assert abs((cert.not_valid_after_utc - expected_expiry).total_seconds()) < 60
 
     def test_generate_server_certificate(self):
         """Test that a server certificate can be generated."""
@@ -105,9 +111,9 @@ class TestCertificateGeneration:
 
         # Check basic constraints - should not be a CA
         basic_constraints = server_cert.extensions.get_extension_for_oid(
-            x509.ExtensionOID.BASIC_CONSTRAINTS
+            ExtensionOID.BASIC_CONSTRAINTS
         )
-        assert basic_constraints.value.ca is False
+        assert cast(BasicConstraints, basic_constraints.value).ca is False
 
     def test_generate_server_certificate_san(self):
         """Test that server certificate includes Subject Alternative Names."""
@@ -126,11 +132,15 @@ class TestCertificateGeneration:
 
         # Get SAN extension
         san_ext = server_cert.extensions.get_extension_for_oid(
-            x509.ExtensionOID.SUBJECT_ALTERNATIVE_NAME
+            ExtensionOID.SUBJECT_ALTERNATIVE_NAME
         )
 
         # Extract DNS names
-        dns_names = [name.value for name in san_ext.value if isinstance(name, x509.DNSName)]
+        dns_names = [
+            name.value
+            for name in cast(SubjectAlternativeName, san_ext.value)
+            if isinstance(name, x509.DNSName)
+        ]
 
         # Check that all DNS names are present
         for name in san_list:
@@ -191,15 +201,15 @@ class TestCertificateGeneration:
 
         # Verify server cert is not a CA
         server_basic_constraints = server_cert.extensions.get_extension_for_oid(
-            x509.ExtensionOID.BASIC_CONSTRAINTS
+            ExtensionOID.BASIC_CONSTRAINTS
         )
-        assert server_basic_constraints.value.ca is False
+        assert cast(BasicConstraints, server_basic_constraints.value).ca is False
 
         # Verify CA cert is a CA
         ca_basic_constraints = ca_cert.extensions.get_extension_for_oid(
-            x509.ExtensionOID.BASIC_CONSTRAINTS
+            ExtensionOID.BASIC_CONSTRAINTS
         )
-        assert ca_basic_constraints.value.ca is True
+        assert cast(BasicConstraints, ca_basic_constraints.value).ca is True
 
 
 @pytest.mark.skipif(not CRYPTO_AVAILABLE, reason="cryptography library not available")
@@ -219,12 +229,12 @@ class TestCertificateValidation:
         # Check server certificate extensions
         ext_oids = [ext.oid for ext in server_cert.extensions]
 
-        assert x509.ExtensionOID.SUBJECT_ALTERNATIVE_NAME in ext_oids
-        assert x509.ExtensionOID.BASIC_CONSTRAINTS in ext_oids
-        assert x509.ExtensionOID.KEY_USAGE in ext_oids
-        assert x509.ExtensionOID.EXTENDED_KEY_USAGE in ext_oids
-        assert x509.ExtensionOID.SUBJECT_KEY_IDENTIFIER in ext_oids
-        assert x509.ExtensionOID.AUTHORITY_KEY_IDENTIFIER in ext_oids
+        assert ExtensionOID.SUBJECT_ALTERNATIVE_NAME in ext_oids
+        assert ExtensionOID.BASIC_CONSTRAINTS in ext_oids
+        assert ExtensionOID.KEY_USAGE in ext_oids
+        assert ExtensionOID.EXTENDED_KEY_USAGE in ext_oids
+        assert ExtensionOID.SUBJECT_KEY_IDENTIFIER in ext_oids
+        assert ExtensionOID.AUTHORITY_KEY_IDENTIFIER in ext_oids
 
     def test_certificate_validity_dates(self):
         """Test that certificates have correct validity dates."""
@@ -232,14 +242,14 @@ class TestCertificateValidation:
         days_valid = 100
         cert = generate_ca_certificate(key, days_valid=days_valid)
 
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
 
         # Check not_valid_before is around now
-        assert abs((cert.not_valid_before - now).total_seconds()) < 60
+        assert abs((cert.not_valid_before_utc - now).total_seconds()) < 60
 
         # Check not_valid_after is around now + days_valid
         expected_expiry = now + timedelta(days=days_valid)
-        assert abs((cert.not_valid_after - expected_expiry).total_seconds()) < 60
+        assert abs((cert.not_valid_after_utc - expected_expiry).total_seconds()) < 60
 
 
 def test_imports():

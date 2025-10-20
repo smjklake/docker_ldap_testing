@@ -13,11 +13,10 @@ Usage:
 import argparse
 import os
 import sys
-from typing import Dict, List, Optional
 
 try:
     from ldap3 import ALL, Connection, Server
-    from ldap3.core.exceptions import LDAPException, LDAPBindError
+    from ldap3.core.exceptions import LDAPBindError, LDAPException
 except ImportError:
     print("Error: ldap3 library not found.")
     print("Install it with: uv pip install ldap3")
@@ -27,9 +26,9 @@ except ImportError:
 # Configuration
 LDAP_PORT = os.environ.get("LDAP_PORT", "389")
 LDAP_SERVER = f"ldap://localhost:{LDAP_PORT}"
-LDAP_BASE_DN = "dc=testing,dc=local"
-LDAP_PEOPLE_OU = "ou=people,dc=testing,dc=local"
-LDAP_GROUPS_OU = "ou=groups,dc=testing,dc=local"
+LDAP_BASE_DN = os.environ.get("LDAP_BASE_DN", "dc=testing,dc=local")
+LDAP_PEOPLE_OU = f"ou=people,{LDAP_BASE_DN}"
+LDAP_GROUPS_OU = f"ou=groups,{LDAP_BASE_DN}"
 
 
 class LDAPAuthenticator:
@@ -66,8 +65,8 @@ class LDAPAuthenticator:
                 print(f"❌ Authentication failed for user: {username}")
                 return False
 
-        except LDAPBindError as e:
-            print(f"❌ Authentication failed: Invalid credentials")
+        except LDAPBindError:
+            print("❌ Authentication failed: Invalid credentials")
             return False
         except LDAPException as e:
             print(f"❌ LDAP error: {e}")
@@ -76,7 +75,7 @@ class LDAPAuthenticator:
             print(f"❌ Unexpected error: {e}")
             return False
 
-    def get_user_info(self, username: str, admin_dn: str, admin_password: str) -> Optional[Dict]:
+    def get_user_info(self, username: str, admin_dn: str, admin_password: str) -> dict | None:
         """
         Retrieve detailed information about a user.
 
@@ -121,7 +120,7 @@ class LDAPAuthenticator:
             print(f"Error retrieving user info: {e}")
             return None
 
-    def get_user_groups(self, username: str, admin_dn: str, admin_password: str) -> List[str]:
+    def get_user_groups(self, username: str, admin_dn: str, admin_password: str) -> list[str]:
         """
         Get all groups that a user belongs to.
 
@@ -154,7 +153,7 @@ class LDAPAuthenticator:
             print(f"Error retrieving user groups: {e}")
             return []
 
-    def list_all_users(self, admin_dn: str, admin_password: str) -> List[Dict]:
+    def list_all_users(self, admin_dn: str, admin_password: str) -> list[dict]:
         """
         List all users in the directory.
 
@@ -192,7 +191,7 @@ class LDAPAuthenticator:
             return []
 
 
-def print_user_info(user_info: Dict):
+def print_user_info(user_info: dict):
     """Pretty print user information."""
     print("\n" + "=" * 50)
     print("USER INFORMATION")
@@ -225,10 +224,10 @@ def main():
     args = parser.parse_args()
 
     # Admin credentials for retrieving user info
-    admin_dn = "cn=admin,dc=testing,dc=local"
-    admin_password = "admin_password"
+    admin_dn = os.environ.get("LDAP_ADMIN_DN", f"cn=admin,{LDAP_BASE_DN}")
+    admin_password = os.environ.get("LDAP_ADMIN_PASSWORD", "admin_password")
 
-    print(f"\n🔐 LDAP Authentication Example")
+    print("\nLDAP Authentication Example")
     print(f"Server: {args.server}\n")
 
     # Initialize authenticator
