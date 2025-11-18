@@ -1,0 +1,203 @@
+# Organizational Structure LDIF
+# This file creates a comprehensive organizational structure for testing.local
+# Including departments, sub-units, and other organizational divisions
+
+# Create Computers OU for computer accounts
+dn: ou=computers,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: computers
+description: Computer and device accounts
+
+# Create Services OU for service accounts
+dn: ou=services,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: services
+description: Service accounts and application identities
+
+# Create Resources OU for shared resources
+dn: ou=resources,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: resources
+description: Shared resources and equipment
+
+# Create Departments OU
+dn: ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: departments
+description: Organizational departments
+
+# IT Department
+dn: ou=IT,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: IT
+description: Information Technology Department
+
+# IT Sub-units
+dn: ou=Infrastructure,ou=IT,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Infrastructure
+description: IT Infrastructure and Operations Team
+
+dn: ou=Security,ou=IT,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Security
+description: Information Security Team
+
+dn: ou=Support,ou=IT,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Support
+description: IT Support and Help Desk
+
+# Engineering Department
+dn: ou=Engineering,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Engineering
+description: Engineering Department
+
+# Engineering Sub-units
+dn: ou=Software,ou=Engineering,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Software
+description: Software Engineering Team
+
+dn: ou=QA,ou=Engineering,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: QA
+description: Quality Assurance Team
+
+dn: ou=DevOps,ou=Engineering,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: DevOps
+description: DevOps and Platform Engineering
+
+# Human Resources Department
+dn: ou=HR,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: HR
+description: Human Resources Department
+
+# Finance Department
+dn: ou=Finance,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Finance
+description: Finance and Accounting Department
+
+# Sales Department
+dn: ou=Sales,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Sales
+description: Sales Department
+
+# Sales Sub-units
+dn: ou=Enterprise,ou=Sales,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Enterprise
+description: Enterprise Sales Team
+
+dn: ou=SMB,ou=Sales,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: SMB
+description: Small and Medium Business Sales
+
+# Marketing Department
+dn: ou=Marketing,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Marketing
+description: Marketing Department
+
+# Marketing Sub-units
+dn: ou=Digital,ou=Marketing,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Digital
+description: Digital Marketing Team
+
+dn: ou=Content,ou=Marketing,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Content
+description: Content and Communications Team
+
+# Operations Department
+dn: ou=Operations,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Operations
+description: Operations Department
+
+# Customer Success Department
+dn: ou=CustomerSuccess,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: CustomerSuccess
+description: Customer Success and Support
+
+# Legal Department
+dn: ou=Legal,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Legal
+description: Legal and Compliance Department
+
+# Executive OU
+dn: ou=Executive,ou=departments,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Executive
+description: Executive Leadership
+
+# Locations OU for geographic organization
+dn: ou=locations,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: locations
+description: Geographic locations and offices
+
+# Location entries
+dn: ou=NewYork,ou=locations,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: NewYork
+description: New York Office
+
+dn: ou=SanFrancisco,ou=locations,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: SanFrancisco
+description: San Francisco Office
+
+dn: ou=London,ou=locations,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: London
+description: London Office
+
+dn: ou=Tokyo,ou=locations,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Tokyo
+description: Tokyo Office
+
+dn: ou=Remote,ou=locations,dc=testing,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Remote
+description: Remote Employees

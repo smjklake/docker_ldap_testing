@@ -1,0 +1,650 @@
+# Department Users LDIF
+# This file creates user accounts across various departments
+# All passwords are set to "password123" for testing purposes
+
+# IT Department Users
+dn: uid=bwilson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: bwilson
+cn: Bob Wilson
+sn: Wilson
+givenName: Bob
+mail: bwilson@testing.local
+telephoneNumber: +1-555-0101
+title: IT Director
+departmentNumber: IT
+employeeNumber: 1001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10100
+gidNumber: 10100
+homeDirectory: /home/bwilson
+loginShell: /bin/bash
+description: IT Director
+
+dn: uid=mjohnson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: mjohnson
+cn: Michael Johnson
+sn: Johnson
+givenName: Michael
+mail: mjohnson@testing.local
+telephoneNumber: +1-555-0102
+title: Systems Administrator
+departmentNumber: IT-Infrastructure
+employeeNumber: 1002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10101
+gidNumber: 10101
+homeDirectory: /home/mjohnson
+loginShell: /bin/bash
+description: Systems Administrator - Infrastructure Team
+
+dn: uid=sdavis,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: sdavis
+cn: Sarah Davis
+sn: Davis
+givenName: Sarah
+mail: sdavis@testing.local
+telephoneNumber: +1-555-0103
+title: Security Engineer
+departmentNumber: IT-Security
+employeeNumber: 1003
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10102
+gidNumber: 10102
+homeDirectory: /home/sdavis
+loginShell: /bin/bash
+description: Security Engineer - Information Security Team
+
+dn: uid=tmartinez,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: tmartinez
+cn: Tom Martinez
+sn: Martinez
+givenName: Tom
+mail: tmartinez@testing.local
+telephoneNumber: +1-555-0104
+title: IT Support Specialist
+departmentNumber: IT-Support
+employeeNumber: 1004
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10103
+gidNumber: 10103
+homeDirectory: /home/tmartinez
+loginShell: /bin/bash
+description: IT Support Specialist - Help Desk
+
+# Engineering Department Users
+dn: uid=aanderson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: aanderson
+cn: Alice Anderson
+sn: Anderson
+givenName: Alice
+mail: aanderson@testing.local
+telephoneNumber: +1-555-0201
+title: VP of Engineering
+departmentNumber: Engineering
+employeeNumber: 2001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10200
+gidNumber: 10200
+homeDirectory: /home/aanderson
+loginShell: /bin/bash
+description: VP of Engineering
+
+dn: uid=dthomas,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: dthomas
+cn: David Thomas
+sn: Thomas
+givenName: David
+mail: dthomas@testing.local
+telephoneNumber: +1-555-0202
+title: Senior Software Engineer
+departmentNumber: Engineering-Software
+employeeNumber: 2002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10201
+gidNumber: 10201
+homeDirectory: /home/dthomas
+loginShell: /bin/bash
+description: Senior Software Engineer
+
+dn: uid=ejackson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: ejackson
+cn: Emily Jackson
+sn: Jackson
+givenName: Emily
+mail: ejackson@testing.local
+telephoneNumber: +1-555-0203
+title: Software Engineer
+departmentNumber: Engineering-Software
+employeeNumber: 2003
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10202
+gidNumber: 10202
+homeDirectory: /home/ejackson
+loginShell: /bin/bash
+description: Software Engineer
+
+dn: uid=rwhite,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: rwhite
+cn: Rachel White
+sn: White
+givenName: Rachel
+mail: rwhite@testing.local
+telephoneNumber: +1-555-0204
+title: QA Engineer
+departmentNumber: Engineering-QA
+employeeNumber: 2004
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10203
+gidNumber: 10203
+homeDirectory: /home/rwhite
+loginShell: /bin/bash
+description: QA Engineer
+
+dn: uid=kharris,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: kharris
+cn: Kevin Harris
+sn: Harris
+givenName: Kevin
+mail: kharris@testing.local
+telephoneNumber: +1-555-0205
+title: DevOps Engineer
+departmentNumber: Engineering-DevOps
+employeeNumber: 2005
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10204
+gidNumber: 10204
+homeDirectory: /home/kharris
+loginShell: /bin/bash
+description: DevOps Engineer
+
+# HR Department Users
+dn: uid=lmartin,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: lmartin
+cn: Lisa Martin
+sn: Martin
+givenName: Lisa
+mail: lmartin@testing.local
+telephoneNumber: +1-555-0301
+title: HR Director
+departmentNumber: HR
+employeeNumber: 3001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10300
+gidNumber: 10300
+homeDirectory: /home/lmartin
+loginShell: /bin/bash
+description: HR Director
+
+dn: uid=jthompson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: jthompson
+cn: Jennifer Thompson
+sn: Thompson
+givenName: Jennifer
+mail: jthompson@testing.local
+telephoneNumber: +1-555-0302
+title: HR Coordinator
+departmentNumber: HR
+employeeNumber: 3002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10301
+gidNumber: 10301
+homeDirectory: /home/jthompson
+loginShell: /bin/bash
+description: HR Coordinator
+
+# Finance Department Users
+dn: uid=pgarcia,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: pgarcia
+cn: Patricia Garcia
+sn: Garcia
+givenName: Patricia
+mail: pgarcia@testing.local
+telephoneNumber: +1-555-0401
+title: CFO
+departmentNumber: Finance
+employeeNumber: 4001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10400
+gidNumber: 10400
+homeDirectory: /home/pgarcia
+loginShell: /bin/bash
+description: Chief Financial Officer
+
+dn: uid=cmiller,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: cmiller
+cn: Christopher Miller
+sn: Miller
+givenName: Christopher
+mail: cmiller@testing.local
+telephoneNumber: +1-555-0402
+title: Senior Accountant
+departmentNumber: Finance
+employeeNumber: 4002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10401
+gidNumber: 10401
+homeDirectory: /home/cmiller
+loginShell: /bin/bash
+description: Senior Accountant
+
+dn: uid=swilson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: swilson
+cn: Samantha Wilson
+sn: Wilson
+givenName: Samantha
+mail: swilson@testing.local
+telephoneNumber: +1-555-0403
+title: Financial Analyst
+departmentNumber: Finance
+employeeNumber: 4003
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10402
+gidNumber: 10402
+homeDirectory: /home/swilson
+loginShell: /bin/bash
+description: Financial Analyst
+
+# Sales Department Users
+dn: uid=rmoore,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: rmoore
+cn: Robert Moore
+sn: Moore
+givenName: Robert
+mail: rmoore@testing.local
+telephoneNumber: +1-555-0501
+mobile: +1-555-0551
+title: VP of Sales
+departmentNumber: Sales
+employeeNumber: 5001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10500
+gidNumber: 10500
+homeDirectory: /home/rmoore
+loginShell: /bin/bash
+description: VP of Sales
+
+dn: uid=ntaylor,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: ntaylor
+cn: Nicole Taylor
+sn: Taylor
+givenName: Nicole
+mail: ntaylor@testing.local
+telephoneNumber: +1-555-0502
+mobile: +1-555-0552
+title: Enterprise Account Executive
+departmentNumber: Sales-Enterprise
+employeeNumber: 5002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10501
+gidNumber: 10501
+homeDirectory: /home/ntaylor
+loginShell: /bin/bash
+description: Enterprise Account Executive
+
+dn: uid=banderson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: banderson
+cn: Brian Anderson
+sn: Anderson
+givenName: Brian
+mail: banderson@testing.local
+telephoneNumber: +1-555-0503
+mobile: +1-555-0553
+title: SMB Sales Representative
+departmentNumber: Sales-SMB
+employeeNumber: 5003
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10502
+gidNumber: 10502
+homeDirectory: /home/banderson
+loginShell: /bin/bash
+description: SMB Sales Representative
+
+dn: uid=amartin,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: amartin
+cn: Amanda Martin
+sn: Martin
+givenName: Amanda
+mail: amartin@testing.local
+telephoneNumber: +1-555-0504
+mobile: +1-555-0554
+title: Sales Development Representative
+departmentNumber: Sales
+employeeNumber: 5004
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10503
+gidNumber: 10503
+homeDirectory: /home/amartin
+loginShell: /bin/bash
+description: Sales Development Representative
+
+# Marketing Department Users
+dn: uid=jlee,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: jlee
+cn: Jessica Lee
+sn: Lee
+givenName: Jessica
+mail: jlee@testing.local
+telephoneNumber: +1-555-0601
+title: Marketing Director
+departmentNumber: Marketing
+employeeNumber: 6001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10600
+gidNumber: 10600
+homeDirectory: /home/jlee
+loginShell: /bin/bash
+description: Marketing Director
+
+dn: uid=mperez,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: mperez
+cn: Maria Perez
+sn: Perez
+givenName: Maria
+mail: mperez@testing.local
+telephoneNumber: +1-555-0602
+title: Digital Marketing Manager
+departmentNumber: Marketing-Digital
+employeeNumber: 6002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10601
+gidNumber: 10601
+homeDirectory: /home/mperez
+loginShell: /bin/bash
+description: Digital Marketing Manager
+
+dn: uid=drobinson,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: drobinson
+cn: Daniel Robinson
+sn: Robinson
+givenName: Daniel
+mail: drobinson@testing.local
+telephoneNumber: +1-555-0603
+title: Content Writer
+departmentNumber: Marketing-Content
+employeeNumber: 6003
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10602
+gidNumber: 10602
+homeDirectory: /home/drobinson
+loginShell: /bin/bash
+description: Content Writer
+
+# Operations Department Users
+dn: uid=jclark,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: jclark
+cn: James Clark
+sn: Clark
+givenName: James
+mail: jclark@testing.local
+telephoneNumber: +1-555-0701
+title: Operations Manager
+departmentNumber: Operations
+employeeNumber: 7001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10700
+gidNumber: 10700
+homeDirectory: /home/jclark
+loginShell: /bin/bash
+description: Operations Manager
+
+dn: uid=erodriguez,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: erodriguez
+cn: Elena Rodriguez
+sn: Rodriguez
+givenName: Elena
+mail: erodriguez@testing.local
+telephoneNumber: +1-555-0702
+title: Operations Coordinator
+departmentNumber: Operations
+employeeNumber: 7002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10701
+gidNumber: 10701
+homeDirectory: /home/erodriguez
+loginShell: /bin/bash
+description: Operations Coordinator
+
+# Customer Success Department Users
+dn: uid=slewis,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: slewis
+cn: Steven Lewis
+sn: Lewis
+givenName: Steven
+mail: slewis@testing.local
+telephoneNumber: +1-555-0801
+title: Customer Success Manager
+departmentNumber: CustomerSuccess
+employeeNumber: 8001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10800
+gidNumber: 10800
+homeDirectory: /home/slewis
+loginShell: /bin/bash
+description: Customer Success Manager
+
+dn: uid=kwalker,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: kwalker
+cn: Karen Walker
+sn: Walker
+givenName: Karen
+mail: kwalker@testing.local
+telephoneNumber: +1-555-0802
+title: Support Engineer
+departmentNumber: CustomerSuccess
+employeeNumber: 8002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10801
+gidNumber: 10801
+homeDirectory: /home/kwalker
+loginShell: /bin/bash
+description: Support Engineer
+
+# Legal Department Users
+dn: uid=dhall,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: dhall
+cn: Diana Hall
+sn: Hall
+givenName: Diana
+mail: dhall@testing.local
+telephoneNumber: +1-555-0901
+title: General Counsel
+departmentNumber: Legal
+employeeNumber: 9001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10900
+gidNumber: 10900
+homeDirectory: /home/dhall
+loginShell: /bin/bash
+description: General Counsel
+
+dn: uid=tyoung,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: tyoung
+cn: Timothy Young
+sn: Young
+givenName: Timothy
+mail: tyoung@testing.local
+telephoneNumber: +1-555-0902
+title: Compliance Officer
+departmentNumber: Legal
+employeeNumber: 9002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 10901
+gidNumber: 10901
+homeDirectory: /home/tyoung
+loginShell: /bin/bash
+description: Compliance Officer
+
+# Executive Users
+dn: uid=cking,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: cking
+cn: Catherine King
+sn: King
+givenName: Catherine
+mail: cking@testing.local
+telephoneNumber: +1-555-1001
+mobile: +1-555-1051
+title: Chief Executive Officer
+departmentNumber: Executive
+employeeNumber: 0001
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 11000
+gidNumber: 11000
+homeDirectory: /home/cking
+loginShell: /bin/bash
+description: Chief Executive Officer
+
+dn: uid=gwright,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: gwright
+cn: George Wright
+sn: Wright
+givenName: George
+mail: gwright@testing.local
+telephoneNumber: +1-555-1002
+mobile: +1-555-1052
+title: Chief Technology Officer
+departmentNumber: Executive
+employeeNumber: 0002
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 11001
+gidNumber: 11001
+homeDirectory: /home/gwright
+loginShell: /bin/bash
+description: Chief Technology Officer
+
+dn: uid=llopez,ou=people,dc=testing,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: top
+uid: llopez
+cn: Laura Lopez
+sn: Lopez
+givenName: Laura
+mail: llopez@testing.local
+telephoneNumber: +1-555-1003
+mobile: +1-555-1053
+title: Chief Operating Officer
+departmentNumber: Executive
+employeeNumber: 0003
+userPassword: {SSHA}Vj/QLoVDZbjklfhV/e6JdTo8MUNRy9dN
+uidNumber: 11002
+gidNumber: 11002
+homeDirectory: /home/llopez
+loginShell: /bin/bash
+description: Chief Operating Officer

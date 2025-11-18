@@ -1,0 +1,527 @@
+# Computer and Device Accounts LDIF
+# This file creates computer accounts, servers, workstations, and network devices
+# Located in ou=computers,dc=testing,dc=local
+
+# Employee Workstations - IT Department
+dn: cn=WS-IT-001,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-IT-001
+ipHostNumber: 10.0.1.101
+macAddress: 00:50:56:00:01:01
+description: Bob Wilson's Workstation - IT Director
+serialNumber: IT-WS-2023-001
+l: New York
+
+dn: cn=WS-IT-002,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-IT-002
+ipHostNumber: 10.0.1.102
+macAddress: 00:50:56:00:01:02
+description: Michael Johnson's Workstation - Systems Admin
+serialNumber: IT-WS-2023-002
+l: New York
+
+dn: cn=WS-IT-003,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-IT-003
+ipHostNumber: 10.0.1.103
+macAddress: 00:50:56:00:01:03
+description: Sarah Davis's Workstation - Security Engineer
+serialNumber: IT-WS-2023-003
+l: San Francisco
+
+dn: cn=WS-IT-004,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-IT-004
+ipHostNumber: 10.0.1.104
+macAddress: 00:50:56:00:01:04
+description: Tom Martinez's Workstation - IT Support
+serialNumber: IT-WS-2023-004
+l: New York
+
+# Employee Workstations - Engineering Department
+dn: cn=WS-ENG-001,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-ENG-001
+ipHostNumber: 10.0.2.101
+macAddress: 00:50:56:00:02:01
+description: Alice Anderson's Workstation - VP of Engineering
+serialNumber: ENG-WS-2023-001
+l: San Francisco
+
+dn: cn=WS-ENG-002,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-ENG-002
+ipHostNumber: 10.0.2.102
+macAddress: 00:50:56:00:02:02
+description: David Thomas's Workstation - Senior Software Engineer
+serialNumber: ENG-WS-2023-002
+l: San Francisco
+
+dn: cn=WS-ENG-003,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-ENG-003
+ipHostNumber: 10.0.2.103
+macAddress: 00:50:56:00:02:03
+description: Emily Jackson's Workstation - Software Engineer
+serialNumber: ENG-WS-2023-003
+l: Remote
+
+dn: cn=WS-ENG-004,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-ENG-004
+ipHostNumber: 10.0.2.104
+macAddress: 00:50:56:00:02:04
+description: Rachel White's Workstation - QA Engineer
+serialNumber: ENG-WS-2023-004
+l: San Francisco
+
+dn: cn=WS-ENG-005,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-ENG-005
+ipHostNumber: 10.0.2.105
+macAddress: 00:50:56:00:02:05
+description: Kevin Harris's Workstation - DevOps Engineer
+serialNumber: ENG-WS-2023-005
+l: New York
+
+# Employee Workstations - Sales Department
+dn: cn=WS-SALES-001,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-SALES-001
+ipHostNumber: 10.0.5.101
+macAddress: 00:50:56:00:05:01
+description: Robert Moore's Workstation - VP of Sales
+serialNumber: SALES-WS-2023-001
+l: New York
+
+dn: cn=WS-SALES-002,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: WS-SALES-002
+ipHostNumber: 10.0.5.102
+macAddress: 00:50:56:00:05:02
+description: Nicole Taylor's Workstation - Enterprise AE
+serialNumber: SALES-WS-2023-002
+l: San Francisco
+
+# Laptops
+dn: cn=LT-EXEC-001,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: LT-EXEC-001
+ipHostNumber: 10.0.10.101
+macAddress: 00:50:56:00:10:01
+description: Catherine King's Laptop - CEO
+serialNumber: EXEC-LT-2024-001
+l: New York
+
+dn: cn=LT-EXEC-002,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: LT-EXEC-002
+ipHostNumber: 10.0.10.102
+macAddress: 00:50:56:00:10:02
+description: George Wright's Laptop - CTO
+serialNumber: EXEC-LT-2024-002
+l: San Francisco
+
+dn: cn=LT-SALES-001,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: LT-SALES-001
+ipHostNumber: 10.0.10.201
+macAddress: 00:50:56:00:10:21
+description: Brian Anderson's Laptop - Sales Rep
+serialNumber: SALES-LT-2023-001
+l: Remote
+
+dn: cn=LT-SALES-002,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: LT-SALES-002
+ipHostNumber: 10.0.10.202
+macAddress: 00:50:56:00:10:22
+description: Amanda Martin's Laptop - Sales Dev Rep
+serialNumber: SALES-LT-2023-002
+l: Remote
+
+# Production Servers
+dn: cn=SRV-WEB-PROD-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-WEB-PROD-01
+ipHostNumber: 10.100.1.10
+macAddress: 00:50:56:10:01:01
+description: Production Web Server 01
+serialNumber: SRV-2022-WEB-001
+l: New York
+owner: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-WEB-PROD-02,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-WEB-PROD-02
+ipHostNumber: 10.100.1.11
+macAddress: 00:50:56:10:01:02
+description: Production Web Server 02
+serialNumber: SRV-2022-WEB-002
+l: San Francisco
+owner: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-DB-PROD-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-DB-PROD-01
+ipHostNumber: 10.100.2.10
+macAddress: 00:50:56:10:02:01
+description: Production Database Server - Primary
+serialNumber: SRV-2022-DB-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-DB-PROD-02,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-DB-PROD-02
+ipHostNumber: 10.100.2.11
+macAddress: 00:50:56:10:02:02
+description: Production Database Server - Replica
+serialNumber: SRV-2022-DB-002
+l: San Francisco
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-APP-PROD-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-APP-PROD-01
+ipHostNumber: 10.100.3.10
+macAddress: 00:50:56:10:03:01
+description: Production Application Server 01
+serialNumber: SRV-2023-APP-001
+l: New York
+owner: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-APP-PROD-02,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-APP-PROD-02
+ipHostNumber: 10.100.3.11
+macAddress: 00:50:56:10:03:02
+description: Production Application Server 02
+serialNumber: SRV-2023-APP-002
+l: San Francisco
+owner: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-API-PROD-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-API-PROD-01
+ipHostNumber: 10.100.4.10
+macAddress: 00:50:56:10:04:01
+description: Production API Server 01
+serialNumber: SRV-2023-API-001
+l: New York
+owner: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-CACHE-PROD-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-CACHE-PROD-01
+ipHostNumber: 10.100.5.10
+macAddress: 00:50:56:10:05:01
+description: Production Redis Cache Server
+serialNumber: SRV-2023-CACHE-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+# Development/Staging Servers
+dn: cn=SRV-WEB-DEV-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-WEB-DEV-01
+ipHostNumber: 10.101.1.10
+macAddress: 00:50:56:11:01:01
+description: Development Web Server
+serialNumber: SRV-2023-WEB-DEV-001
+l: San Francisco
+owner: uid=dthomas,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-DB-DEV-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-DB-DEV-01
+ipHostNumber: 10.101.2.10
+macAddress: 00:50:56:11:02:01
+description: Development Database Server
+serialNumber: SRV-2023-DB-DEV-001
+l: San Francisco
+owner: uid=dthomas,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-APP-STAGE-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-APP-STAGE-01
+ipHostNumber: 10.101.3.10
+macAddress: 00:50:56:11:03:01
+description: Staging Application Server
+serialNumber: SRV-2023-APP-STAGE-001
+l: San Francisco
+owner: uid=rwhite,ou=people,dc=testing,dc=local
+
+# Infrastructure Servers
+dn: cn=SRV-LDAP-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-LDAP-01
+ipHostNumber: 10.100.10.10
+macAddress: 00:50:56:10:10:01
+description: LDAP Directory Server
+serialNumber: SRV-2022-LDAP-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-DNS-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-DNS-01
+ipHostNumber: 10.100.10.20
+macAddress: 00:50:56:10:10:02
+description: Primary DNS Server
+serialNumber: SRV-2022-DNS-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-DNS-02,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-DNS-02
+ipHostNumber: 10.100.10.21
+macAddress: 00:50:56:10:10:03
+description: Secondary DNS Server
+serialNumber: SRV-2022-DNS-002
+l: San Francisco
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-FILE-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-FILE-01
+ipHostNumber: 10.100.10.30
+macAddress: 00:50:56:10:10:04
+description: File Server - Shared Storage
+serialNumber: SRV-2022-FILE-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-BACKUP-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-BACKUP-01
+ipHostNumber: 10.100.10.40
+macAddress: 00:50:56:10:10:05
+description: Backup Server
+serialNumber: SRV-2022-BACKUP-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-MONITOR-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-MONITOR-01
+ipHostNumber: 10.100.10.50
+macAddress: 00:50:56:10:10:06
+description: Monitoring Server - Prometheus/Grafana
+serialNumber: SRV-2023-MON-001
+l: New York
+owner: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=SRV-LOG-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SRV-LOG-01
+ipHostNumber: 10.100.10.60
+macAddress: 00:50:56:10:10:07
+description: Log Aggregation Server - ELK Stack
+serialNumber: SRV-2023-LOG-001
+l: New York
+owner: uid=sdavis,ou=people,dc=testing,dc=local
+
+# Network Devices
+dn: cn=RTR-CORE-NY-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: RTR-CORE-NY-01
+ipHostNumber: 10.200.1.1
+macAddress: 00:1A:2B:3C:4D:01
+description: Core Router - New York Office
+serialNumber: CISCO-RTR-2022-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=RTR-CORE-SF-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: RTR-CORE-SF-01
+ipHostNumber: 10.200.2.1
+macAddress: 00:1A:2B:3C:4D:02
+description: Core Router - San Francisco Office
+serialNumber: CISCO-RTR-2022-002
+l: San Francisco
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SW-CORE-NY-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SW-CORE-NY-01
+ipHostNumber: 10.200.1.10
+macAddress: 00:1A:2B:3C:5D:01
+description: Core Switch - New York Office
+serialNumber: CISCO-SW-2022-001
+l: New York
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SW-CORE-SF-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: SW-CORE-SF-01
+ipHostNumber: 10.200.2.10
+macAddress: 00:1A:2B:3C:5D:02
+description: Core Switch - San Francisco Office
+serialNumber: CISCO-SW-2022-002
+l: San Francisco
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=FW-EDGE-NY-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: FW-EDGE-NY-01
+ipHostNumber: 10.200.1.100
+macAddress: 00:1A:2B:3C:6D:01
+description: Edge Firewall - New York Office
+serialNumber: PALO-FW-2022-001
+l: New York
+owner: uid=sdavis,ou=people,dc=testing,dc=local
+
+dn: cn=FW-EDGE-SF-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: FW-EDGE-SF-01
+ipHostNumber: 10.200.2.100
+macAddress: 00:1A:2B:3C:6D:02
+description: Edge Firewall - San Francisco Office
+serialNumber: PALO-FW-2022-002
+l: San Francisco
+owner: uid=sdavis,ou=people,dc=testing,dc=local
+
+dn: cn=AP-NY-FL1-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: AP-NY-FL1-01
+ipHostNumber: 10.0.1.201
+macAddress: 00:1A:2B:3C:7D:01
+description: Wireless Access Point - NY Floor 1
+serialNumber: UBNT-AP-2023-001
+l: New York
+
+dn: cn=AP-SF-FL2-01,ou=computers,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: ieee802Device
+objectClass: top
+cn: AP-SF-FL2-01
+ipHostNumber: 10.0.2.201
+macAddress: 00:1A:2B:3C:7D:02
+description: Wireless Access Point - SF Floor 2
+serialNumber: UBNT-AP-2023-002
+l: San Francisco

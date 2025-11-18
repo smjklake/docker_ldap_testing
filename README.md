@@ -397,6 +397,85 @@ ldapsearch -H ldap://localhost:{.env:LDAP_PORT} \
   "(objectClass=*)"
 ```
 
+## Extended Directory Structure
+
+This project includes a **comprehensive enterprise directory structure** with 240+ entries across multiple organizational units, providing a realistic testing environment.
+
+### What's Included
+
+The directory structure now includes:
+
+- **34 User Accounts** across multiple departments (IT, Engineering, Sales, Marketing, Finance, HR, Operations, Legal, Executive)
+- **30+ Service Accounts** for applications, CI/CD, monitoring, automation, and integrations
+- **45+ Computer/Device Accounts** including workstations, laptops, servers (production, development, infrastructure), and network devices
+- **50+ Groups** covering departments, security/access control, applications, projects, and locations
+- **40+ Shared Resources** including conference rooms, printers, video conferencing equipment, and facilities
+- **40+ Organizational Units** with nested department and location structures
+
+### LDIF Files
+
+The directory is populated from multiple LDIF files loaded in sequence:
+
+1. `01-users.ldif` - Base users and groups (original test users)
+2. `02-organizational-structure.ldif` - Comprehensive OU hierarchy
+3. `03-department-users.ldif` - Departmental user accounts
+4. `04-computers.ldif` - Computer and device accounts
+5. `05-service-accounts.ldif` - Application service accounts
+6. `06-groups.ldif` - Comprehensive group structure
+7. `07-resources.ldif` - Shared resources and equipment
+
+### Key Features
+
+- **Realistic Organization**: Departments with nested sub-units (IT, Engineering, Sales, Marketing, etc.)
+- **Geographic Distribution**: Users and devices assigned to New York, San Francisco, London, Tokyo, and Remote locations
+- **Network Infrastructure**: Servers with IP addresses, MAC addresses, and proper attributes
+- **Group Hierarchies**: Department groups, security groups, application access groups, and project teams
+- **Service Accounts**: Dedicated accounts for CI/CD, monitoring, backup, automation, and integrations
+- **Physical Resources**: Conference rooms, printers, video conferencing equipment cataloged in LDAP
+
+### Documentation
+
+For detailed information about the directory structure, including:
+- Complete listings of all users, computers, and resources
+- LDAP search examples
+- Customization instructions
+- Integration patterns
+
+See **[ldif/README.md](ldif/README.md)** for comprehensive documentation.
+
+### Example Queries
+
+```bash
+# List all engineering team members
+ldapsearch -x -H ldap://localhost:389 -D "cn=admin,dc=testing,dc=local" -w admin \
+  -b "ou=people,dc=testing,dc=local" "(departmentNumber=Engineering*)" cn mail title
+
+# Find all production servers
+ldapsearch -x -H ldap://localhost:389 -D "cn=admin,dc=testing,dc=local" -w admin \
+  -b "ou=computers,dc=testing,dc=local" "(cn=SRV-*-PROD-*)" cn ipHostNumber
+
+# List conference rooms in New York
+ldapsearch -x -H ldap://localhost:389 -D "cn=admin,dc=testing,dc=local" -w admin \
+  -b "ou=resources,dc=testing,dc=local" "(&(cn=*-CR-*)(l=New York))" cn description
+```
+
+### Python Explorer Script
+
+A comprehensive directory explorer script is available to demonstrate working with the extended structure:
+
+```bash
+# From the project root
+python examples/directory_explorer.py
+```
+
+This script demonstrates:
+- Searching users by department
+- Finding computers and servers by type
+- Querying service accounts
+- Exploring groups and memberships
+- Locating shared resources
+- Testing authentication
+
 ## Next Steps
 
 Now that your LDAP server is running, you can:

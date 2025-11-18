@@ -1,0 +1,561 @@
+# Shared Resources LDIF
+# This file creates shared resources such as conference rooms, printers, and equipment
+# Located in ou=resources,dc=testing,dc=local
+
+# ==========================================
+# CONFERENCE ROOMS - NEW YORK OFFICE
+# ==========================================
+
+dn: cn=NY-CR-101,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: NY-CR-101
+roomNumber: 101
+description: Small Conference Room - 4 person capacity
+l: New York
+telephoneNumber: +1-555-8101
+seeAlso: Building A, Floor 1
+ou: Conference Rooms
+
+dn: cn=NY-CR-201,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: NY-CR-201
+roomNumber: 201
+description: Medium Conference Room - 8 person capacity, Video Conference Enabled
+l: New York
+telephoneNumber: +1-555-8201
+seeAlso: Building A, Floor 2
+ou: Conference Rooms
+
+dn: cn=NY-CR-301-Boardroom,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: NY-CR-301-Boardroom
+roomNumber: 301
+description: Executive Boardroom - 20 person capacity, Video Conference, Whiteboard
+l: New York
+telephoneNumber: +1-555-8301
+seeAlso: Building A, Floor 3
+ou: Conference Rooms
+
+dn: cn=NY-CR-202-Innovation,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: NY-CR-202-Innovation
+roomNumber: 202
+description: Innovation Lab - 12 person capacity, Collaborative Space
+l: New York
+telephoneNumber: +1-555-8202
+seeAlso: Building A, Floor 2
+ou: Conference Rooms
+
+dn: cn=NY-CR-Huddle-A,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: NY-CR-Huddle-A
+roomNumber: Huddle-A
+description: Huddle Room A - 2 person capacity, Phone Booth Style
+l: New York
+seeAlso: Building A, Floor 1
+ou: Conference Rooms
+
+# ==========================================
+# CONFERENCE ROOMS - SAN FRANCISCO OFFICE
+# ==========================================
+
+dn: cn=SF-CR-101,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: SF-CR-101
+roomNumber: 101
+description: Small Conference Room - 4 person capacity
+l: San Francisco
+telephoneNumber: +1-555-7101
+seeAlso: Building B, Floor 1
+ou: Conference Rooms
+
+dn: cn=SF-CR-201,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: SF-CR-201
+roomNumber: 201
+description: Medium Conference Room - 10 person capacity, Video Conference Enabled
+l: San Francisco
+telephoneNumber: +1-555-7201
+seeAlso: Building B, Floor 2
+ou: Conference Rooms
+
+dn: cn=SF-CR-301-Skyline,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: SF-CR-301-Skyline
+roomNumber: 301
+description: Skyline Conference Room - 16 person capacity, Video Conference, Smart Board
+l: San Francisco
+telephoneNumber: +1-555-7301
+seeAlso: Building B, Floor 3
+ou: Conference Rooms
+
+dn: cn=SF-CR-AllHands,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: SF-CR-AllHands
+roomNumber: All-Hands
+description: All Hands Meeting Room - 100 person capacity, Theater Style
+l: San Francisco
+telephoneNumber: +1-555-7401
+seeAlso: Building B, Floor 1
+ou: Conference Rooms
+
+# ==========================================
+# CONFERENCE ROOMS - LONDON OFFICE
+# ==========================================
+
+dn: cn=LON-CR-Thames,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: LON-CR-Thames
+roomNumber: Thames
+description: Thames Conference Room - 8 person capacity, Video Conference
+l: London
+telephoneNumber: +44-20-5551-0101
+seeAlso: London Office, Floor 1
+ou: Conference Rooms
+
+dn: cn=LON-CR-Westminster,ou=resources,dc=testing,dc=local
+objectClass: room
+objectClass: device
+objectClass: top
+cn: LON-CR-Westminster
+roomNumber: Westminster
+description: Westminster Conference Room - 12 person capacity, Video Conference
+l: London
+telephoneNumber: +44-20-5551-0102
+seeAlso: London Office, Floor 2
+ou: Conference Rooms
+
+# ==========================================
+# PRINTERS - NEW YORK OFFICE
+# ==========================================
+
+dn: cn=NY-PRINTER-FL1-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-PRINTER-FL1-01
+ipHostNumber: 10.0.1.210
+description: Color Laser Printer - HP LaserJet Enterprise, Floor 1
+l: New York
+serialNumber: HP-LJ-2023-NY-001
+ou: Printers
+physicalDeliveryOfficeName: Building A, Floor 1, Copy Room
+
+dn: cn=NY-PRINTER-FL2-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-PRINTER-FL2-01
+ipHostNumber: 10.0.1.211
+description: B&W Laser Printer - HP LaserJet Pro, Floor 2
+l: New York
+serialNumber: HP-LJ-2023-NY-002
+ou: Printers
+physicalDeliveryOfficeName: Building A, Floor 2, Near IT
+
+dn: cn=NY-MFP-FL1-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-MFP-FL1-01
+ipHostNumber: 10.0.1.220
+description: Multi-Function Printer - Xerox WorkCentre, Print/Copy/Scan/Fax
+l: New York
+serialNumber: XEROX-WC-2023-NY-001
+ou: Printers
+physicalDeliveryOfficeName: Building A, Floor 1, Main Copy Room
+
+dn: cn=NY-MFP-FL3-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-MFP-FL3-01
+ipHostNumber: 10.0.1.221
+description: Multi-Function Printer - Xerox WorkCentre, Executive Floor
+l: New York
+serialNumber: XEROX-WC-2023-NY-002
+ou: Printers
+physicalDeliveryOfficeName: Building A, Floor 3, Executive Area
+
+dn: cn=NY-PLOTTER-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-PLOTTER-01
+ipHostNumber: 10.0.1.230
+description: Large Format Plotter - HP DesignJet, Engineering Plots
+l: New York
+serialNumber: HP-DJ-2023-NY-001
+ou: Printers
+physicalDeliveryOfficeName: Building A, Floor 2, Engineering
+
+# ==========================================
+# PRINTERS - SAN FRANCISCO OFFICE
+# ==========================================
+
+dn: cn=SF-PRINTER-FL1-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-PRINTER-FL1-01
+ipHostNumber: 10.0.2.210
+description: Color Laser Printer - HP LaserJet Enterprise, Floor 1
+l: San Francisco
+serialNumber: HP-LJ-2023-SF-001
+ou: Printers
+physicalDeliveryOfficeName: Building B, Floor 1, Copy Room
+
+dn: cn=SF-MFP-FL2-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-MFP-FL2-01
+ipHostNumber: 10.0.2.220
+description: Multi-Function Printer - Xerox WorkCentre, Print/Copy/Scan
+l: San Francisco
+serialNumber: XEROX-WC-2023-SF-001
+ou: Printers
+physicalDeliveryOfficeName: Building B, Floor 2, Main Area
+
+dn: cn=SF-MFP-FL3-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-MFP-FL3-01
+ipHostNumber: 10.0.2.221
+description: Multi-Function Printer - Canon imageRUNNER, Engineering Area
+l: San Francisco
+serialNumber: CANON-IR-2023-SF-001
+ou: Printers
+physicalDeliveryOfficeName: Building B, Floor 3, Engineering
+
+# ==========================================
+# PROJECTORS AND DISPLAYS
+# ==========================================
+
+dn: cn=NY-PROJ-CR201,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-PROJ-CR201
+description: Conference Room Projector - Epson PowerLite, Conference Room 201
+l: New York
+serialNumber: EPSON-PL-2022-001
+ou: Projectors
+physicalDeliveryOfficeName: Building A, Floor 2, Room 201
+
+dn: cn=NY-PROJ-CR301,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-PROJ-CR301
+description: Conference Room Projector - Sony VPL, Boardroom
+l: New York
+serialNumber: SONY-VPL-2022-001
+ou: Projectors
+physicalDeliveryOfficeName: Building A, Floor 3, Boardroom
+
+dn: cn=SF-PROJ-CR201,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: SF-PROJ-CR201
+description: Conference Room Projector - Epson PowerLite, Conference Room 201
+l: San Francisco
+serialNumber: EPSON-PL-2022-002
+ou: Projectors
+physicalDeliveryOfficeName: Building B, Floor 2, Room 201
+
+dn: cn=NY-DISPLAY-Lobby,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-DISPLAY-Lobby
+description: Digital Signage Display - Samsung 75 inch, Lobby
+l: New York
+serialNumber: SAMSUNG-DS-2023-001
+ou: Displays
+physicalDeliveryOfficeName: Building A, Floor 1, Main Lobby
+
+dn: cn=SF-DISPLAY-Lobby,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: SF-DISPLAY-Lobby
+description: Digital Signage Display - LG 65 inch, Lobby
+l: San Francisco
+serialNumber: LG-DS-2023-001
+ou: Displays
+physicalDeliveryOfficeName: Building B, Floor 1, Main Lobby
+
+# ==========================================
+# VIDEO CONFERENCE EQUIPMENT
+# ==========================================
+
+dn: cn=NY-VC-CR201,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-VC-CR201
+ipHostNumber: 10.0.1.240
+description: Video Conference System - Zoom Room, Conference Room 201
+l: New York
+serialNumber: ZOOM-RM-2023-NY-001
+ou: Video Conference
+physicalDeliveryOfficeName: Building A, Floor 2, Room 201
+
+dn: cn=NY-VC-CR301,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-VC-CR301
+ipHostNumber: 10.0.1.241
+description: Video Conference System - Cisco Webex Room Kit, Boardroom
+l: New York
+serialNumber: CISCO-WX-2023-NY-001
+ou: Video Conference
+physicalDeliveryOfficeName: Building A, Floor 3, Boardroom
+
+dn: cn=SF-VC-CR201,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-VC-CR201
+ipHostNumber: 10.0.2.240
+description: Video Conference System - Zoom Room, Conference Room 201
+l: San Francisco
+serialNumber: ZOOM-RM-2023-SF-001
+ou: Video Conference
+physicalDeliveryOfficeName: Building B, Floor 2, Room 201
+
+dn: cn=SF-VC-CR301,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-VC-CR301
+ipHostNumber: 10.0.2.241
+description: Video Conference System - Poly Studio X, Skyline Room
+l: San Francisco
+serialNumber: POLY-SX-2023-SF-001
+ou: Video Conference
+physicalDeliveryOfficeName: Building B, Floor 3, Skyline Room
+
+# ==========================================
+# SHARED WORKSTATIONS AND KIOSKS
+# ==========================================
+
+dn: cn=NY-KIOSK-Lobby,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-KIOSK-Lobby
+ipHostNumber: 10.0.1.250
+description: Visitor Check-in Kiosk - Lobby
+l: New York
+serialNumber: KIOSK-2023-NY-001
+ou: Kiosks
+physicalDeliveryOfficeName: Building A, Floor 1, Main Lobby
+
+dn: cn=NY-HOTDESK-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-HOTDESK-01
+description: Hot Desk Workstation 01 - Available for temporary use
+l: New York
+serialNumber: DESK-2023-NY-001
+ou: Hot Desks
+physicalDeliveryOfficeName: Building A, Floor 2, Open Area
+
+dn: cn=SF-HOTDESK-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: SF-HOTDESK-01
+description: Hot Desk Workstation 01 - Available for temporary use
+l: San Francisco
+serialNumber: DESK-2023-SF-001
+ou: Hot Desks
+physicalDeliveryOfficeName: Building B, Floor 2, Open Area
+
+# ==========================================
+# NETWORK STORAGE AND FILE SERVERS
+# ==========================================
+
+dn: cn=NY-NAS-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-NAS-01
+ipHostNumber: 10.0.1.30
+description: Network Attached Storage - Synology NAS, Department Shares
+l: New York
+serialNumber: SYNOLOGY-2023-NY-001
+ou: Storage
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=SF-NAS-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-NAS-01
+ipHostNumber: 10.0.2.30
+description: Network Attached Storage - QNAP NAS, Department Shares
+l: San Francisco
+serialNumber: QNAP-2023-SF-001
+ou: Storage
+owner: uid=mjohnson,ou=people,dc=testing,dc=local
+
+# ==========================================
+# PHONES AND COMMUNICATION EQUIPMENT
+# ==========================================
+
+dn: cn=NY-PHONE-Reception,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-PHONE-Reception
+ipHostNumber: 10.0.1.100
+telephoneNumber: +1-555-0100
+description: Reception Desk Phone - Cisco IP Phone
+l: New York
+serialNumber: CISCO-IP-2023-NY-001
+ou: Phones
+
+dn: cn=SF-PHONE-Reception,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-PHONE-Reception
+ipHostNumber: 10.0.2.100
+telephoneNumber: +1-415-555-0100
+description: Reception Desk Phone - Cisco IP Phone
+l: San Francisco
+serialNumber: CISCO-IP-2023-SF-001
+ou: Phones
+
+dn: cn=NY-PHONE-CR301,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-PHONE-CR301
+ipHostNumber: 10.0.1.101
+telephoneNumber: +1-555-8301
+description: Boardroom Conference Phone - Polycom SoundStation
+l: New York
+serialNumber: POLY-SS-2022-NY-001
+ou: Phones
+
+# ==========================================
+# SPECIALIZED EQUIPMENT
+# ==========================================
+
+dn: cn=NY-SCANNER-FL1,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-SCANNER-FL1
+ipHostNumber: 10.0.1.260
+description: Document Scanner - Fujitsu ScanSnap, High-speed scanner
+l: New York
+serialNumber: FUJITSU-SS-2023-NY-001
+ou: Scanners
+physicalDeliveryOfficeName: Building A, Floor 1, Copy Room
+
+dn: cn=NY-SHREDDER-FL1,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-SHREDDER-FL1
+description: Document Shredder - Industrial grade, Cross-cut
+l: New York
+serialNumber: SHRED-2022-NY-001
+ou: Shredders
+physicalDeliveryOfficeName: Building A, Floor 1, Copy Room
+
+dn: cn=SF-SCANNER-FL2,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-SCANNER-FL2
+ipHostNumber: 10.0.2.260
+description: Document Scanner - Epson WorkForce
+l: San Francisco
+serialNumber: EPSON-WF-2023-SF-001
+ou: Scanners
+physicalDeliveryOfficeName: Building B, Floor 2, Copy Room
+
+dn: cn=NY-LABEL-PRINTER-01,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-LABEL-PRINTER-01
+description: Label Printer - Brother P-Touch, Shipping/Mailroom
+l: New York
+serialNumber: BROTHER-PT-2023-NY-001
+ou: Label Printers
+physicalDeliveryOfficeName: Building A, Floor 1, Mailroom
+
+# ==========================================
+# PARKING AND ACCESS CONTROL
+# ==========================================
+
+dn: cn=NY-PARKING-Garage-A,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-PARKING-Garage-A
+description: Parking Garage A - 50 spaces
+l: New York
+ou: Parking
+physicalDeliveryOfficeName: Building A, Underground Garage
+
+dn: cn=NY-PARKING-Garage-B,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: NY-PARKING-Garage-B
+description: Parking Garage B - 30 spaces
+l: New York
+ou: Parking
+physicalDeliveryOfficeName: Building A, Street Level
+
+dn: cn=SF-PARKING-Lot-Main,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: top
+cn: SF-PARKING-Lot-Main
+description: Main Parking Lot - 75 spaces
+l: San Francisco
+ou: Parking
+physicalDeliveryOfficeName: Building B, Adjacent Lot
+
+dn: cn=NY-BADGE-READER-MainEntry,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: NY-BADGE-READER-MainEntry
+ipHostNumber: 10.0.1.150
+description: Badge Reader - Main Entry Door, HID ProxCard Reader
+l: New York
+serialNumber: HID-PR-2022-NY-001
+ou: Access Control
+
+dn: cn=SF-BADGE-READER-MainEntry,ou=resources,dc=testing,dc=local
+objectClass: device
+objectClass: ipHost
+objectClass: top
+cn: SF-BADGE-READER-MainEntry
+ipHostNumber: 10.0.2.150
+description: Badge Reader - Main Entry Door, HID ProxCard Reader
+l: San Francisco
+serialNumber: HID-PR-2022-SF-001
+ou: Access Control

@@ -1,0 +1,567 @@
+# Groups LDIF
+# This file creates comprehensive departmental, functional, and security groups
+# Located in ou=groups,dc=testing,dc=local
+
+# ==========================================
+# DEPARTMENT GROUPS
+# ==========================================
+
+# IT Department Groups
+dn: cn=it-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: it-all
+description: All IT Department Members
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=tmartinez,ou=people,dc=testing,dc=local
+
+dn: cn=it-infrastructure,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: it-infrastructure
+description: IT Infrastructure Team
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=it-security,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: it-security
+description: IT Security Team
+member: uid=sdavis,ou=people,dc=testing,dc=local
+
+dn: cn=it-support,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: it-support
+description: IT Support and Help Desk Team
+member: uid=tmartinez,ou=people,dc=testing,dc=local
+
+# Engineering Department Groups
+dn: cn=engineering-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: engineering-all
+description: All Engineering Department Members
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=rwhite,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+
+dn: cn=engineering-software,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: engineering-software
+description: Software Engineering Team
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+
+dn: cn=engineering-qa,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: engineering-qa
+description: Quality Assurance Team
+member: uid=rwhite,ou=people,dc=testing,dc=local
+
+dn: cn=engineering-devops,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: engineering-devops
+description: DevOps and Platform Engineering Team
+member: uid=kharris,ou=people,dc=testing,dc=local
+
+# HR Department Groups
+dn: cn=hr-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: hr-all
+description: All Human Resources Department Members
+member: uid=lmartin,ou=people,dc=testing,dc=local
+member: uid=jthompson,ou=people,dc=testing,dc=local
+
+# Finance Department Groups
+dn: cn=finance-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: finance-all
+description: All Finance Department Members
+member: uid=pgarcia,ou=people,dc=testing,dc=local
+member: uid=cmiller,ou=people,dc=testing,dc=local
+member: uid=swilson,ou=people,dc=testing,dc=local
+
+# Sales Department Groups
+dn: cn=sales-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: sales-all
+description: All Sales Department Members
+member: uid=rmoore,ou=people,dc=testing,dc=local
+member: uid=ntaylor,ou=people,dc=testing,dc=local
+member: uid=banderson,ou=people,dc=testing,dc=local
+member: uid=amartin,ou=people,dc=testing,dc=local
+
+dn: cn=sales-enterprise,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: sales-enterprise
+description: Enterprise Sales Team
+member: uid=ntaylor,ou=people,dc=testing,dc=local
+
+dn: cn=sales-smb,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: sales-smb
+description: Small and Medium Business Sales Team
+member: uid=banderson,ou=people,dc=testing,dc=local
+
+# Marketing Department Groups
+dn: cn=marketing-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: marketing-all
+description: All Marketing Department Members
+member: uid=jlee,ou=people,dc=testing,dc=local
+member: uid=mperez,ou=people,dc=testing,dc=local
+member: uid=drobinson,ou=people,dc=testing,dc=local
+
+dn: cn=marketing-digital,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: marketing-digital
+description: Digital Marketing Team
+member: uid=mperez,ou=people,dc=testing,dc=local
+
+dn: cn=marketing-content,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: marketing-content
+description: Content and Communications Team
+member: uid=drobinson,ou=people,dc=testing,dc=local
+
+# Operations Department Groups
+dn: cn=operations-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: operations-all
+description: All Operations Department Members
+member: uid=jclark,ou=people,dc=testing,dc=local
+member: uid=erodriguez,ou=people,dc=testing,dc=local
+
+# Customer Success Department Groups
+dn: cn=customer-success-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: customer-success-all
+description: All Customer Success Department Members
+member: uid=slewis,ou=people,dc=testing,dc=local
+member: uid=kwalker,ou=people,dc=testing,dc=local
+
+# Legal Department Groups
+dn: cn=legal-all,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: legal-all
+description: All Legal Department Members
+member: uid=dhall,ou=people,dc=testing,dc=local
+member: uid=tyoung,ou=people,dc=testing,dc=local
+
+# Executive Groups
+dn: cn=executive,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: executive
+description: Executive Leadership Team
+member: uid=cking,ou=people,dc=testing,dc=local
+member: uid=gwright,ou=people,dc=testing,dc=local
+member: uid=llopez,ou=people,dc=testing,dc=local
+member: uid=pgarcia,ou=people,dc=testing,dc=local
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=rmoore,ou=people,dc=testing,dc=local
+
+# ==========================================
+# FUNCTIONAL/ROLE-BASED GROUPS
+# ==========================================
+
+dn: cn=managers,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: managers
+description: All Managers and Directors
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=lmartin,ou=people,dc=testing,dc=local
+member: uid=rmoore,ou=people,dc=testing,dc=local
+member: uid=jlee,ou=people,dc=testing,dc=local
+member: uid=jclark,ou=people,dc=testing,dc=local
+member: uid=slewis,ou=people,dc=testing,dc=local
+
+dn: cn=senior-staff,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: senior-staff
+description: Senior Staff Members
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=cmiller,ou=people,dc=testing,dc=local
+member: uid=mperez,ou=people,dc=testing,dc=local
+
+# ==========================================
+# SECURITY AND ACCESS GROUPS
+# ==========================================
+
+dn: cn=system-administrators,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: system-administrators
+description: System Administrators with elevated privileges
+member: uid=admin,ou=people,dc=testing,dc=local
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+
+dn: cn=security-team,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: security-team
+description: Security Team Members
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=bwilson,ou=people,dc=testing,dc=local
+
+dn: cn=database-admins,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: database-admins
+description: Database Administrators
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+
+dn: cn=network-admins,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: network-admins
+description: Network Administrators
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+
+dn: cn=vpn-users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: vpn-users
+description: Users with VPN access
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=cking,ou=people,dc=testing,dc=local
+member: uid=gwright,ou=people,dc=testing,dc=local
+
+dn: cn=ssh-access,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: ssh-access
+description: Users with SSH server access
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=production-access,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: production-access
+description: Users with production environment access
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=gwright,ou=people,dc=testing,dc=local
+
+dn: cn=sudo-users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: sudo-users
+description: Users with sudo privileges
+member: uid=admin,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+
+# ==========================================
+# APPLICATION ACCESS GROUPS
+# ==========================================
+
+dn: cn=gitlab-users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: gitlab-users
+description: GitLab Users
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=rwhite,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+
+dn: cn=jira-users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: jira-users
+description: Jira Users
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=rwhite,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+member: uid=jclark,ou=people,dc=testing,dc=local
+
+dn: cn=confluence-users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: confluence-users
+description: Confluence Wiki Users
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+member: uid=jlee,ou=people,dc=testing,dc=local
+member: uid=drobinson,ou=people,dc=testing,dc=local
+
+dn: cn=monitoring-access,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: monitoring-access
+description: Monitoring System Access (Grafana, Prometheus)
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+
+dn: cn=elk-access,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: elk-access
+description: ELK Stack Access (Elasticsearch, Logstash, Kibana)
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+
+dn: cn=salesforce-users,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: salesforce-users
+description: Salesforce CRM Users
+member: uid=rmoore,ou=people,dc=testing,dc=local
+member: uid=ntaylor,ou=people,dc=testing,dc=local
+member: uid=banderson,ou=people,dc=testing,dc=local
+member: uid=amartin,ou=people,dc=testing,dc=local
+member: uid=slewis,ou=people,dc=testing,dc=local
+
+dn: cn=crm-admins,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: crm-admins
+description: CRM Administrators
+member: uid=rmoore,ou=people,dc=testing,dc=local
+
+# ==========================================
+# PROJECT GROUPS
+# ==========================================
+
+dn: cn=project-phoenix,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: project-phoenix
+description: Project Phoenix Team Members
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=rwhite,ou=people,dc=testing,dc=local
+member: uid=jdoe,ou=people,dc=testing,dc=local
+
+dn: cn=project-atlas,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: project-atlas
+description: Project Atlas Team Members
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+
+dn: cn=project-nimbus,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: project-nimbus
+description: Project Nimbus Team Members
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+
+# ==========================================
+# LOCATION-BASED GROUPS
+# ==========================================
+
+dn: cn=location-newyork,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: location-newyork
+description: New York Office Employees
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=tmartinez,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=cking,ou=people,dc=testing,dc=local
+member: uid=rmoore,ou=people,dc=testing,dc=local
+
+dn: cn=location-sanfrancisco,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: location-sanfrancisco
+description: San Francisco Office Employees
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=rwhite,ou=people,dc=testing,dc=local
+member: uid=gwright,ou=people,dc=testing,dc=local
+member: uid=ntaylor,ou=people,dc=testing,dc=local
+
+dn: cn=location-remote,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: location-remote
+description: Remote Employees
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=banderson,ou=people,dc=testing,dc=local
+member: uid=amartin,ou=people,dc=testing,dc=local
+
+# ==========================================
+# SERVICE ACCOUNT GROUPS
+# ==========================================
+
+dn: cn=service-accounts,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: service-accounts
+description: All Service Accounts
+member: uid=svc-webapp-prod,ou=services,dc=testing,dc=local
+member: uid=svc-api-prod,ou=services,dc=testing,dc=local
+member: uid=svc-db-backup,ou=services,dc=testing,dc=local
+member: uid=svc-jenkins,ou=services,dc=testing,dc=local
+member: uid=svc-prometheus,ou=services,dc=testing,dc=local
+member: uid=svc-grafana,ou=services,dc=testing,dc=local
+member: uid=svc-ldap-sync,ou=services,dc=testing,dc=local
+
+dn: cn=service-production,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: service-production
+description: Production Service Accounts
+member: uid=svc-webapp-prod,ou=services,dc=testing,dc=local
+member: uid=svc-api-prod,ou=services,dc=testing,dc=local
+member: uid=svc-db-backup,ou=services,dc=testing,dc=local
+
+dn: cn=service-monitoring,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: service-monitoring
+description: Monitoring Service Accounts
+member: uid=svc-prometheus,ou=services,dc=testing,dc=local
+member: uid=svc-grafana,ou=services,dc=testing,dc=local
+member: uid=svc-nagios,ou=services,dc=testing,dc=local
+member: uid=svc-db-monitor,ou=services,dc=testing,dc=local
+
+dn: cn=service-cicd,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: service-cicd
+description: CI/CD Service Accounts
+member: uid=svc-jenkins,ou=services,dc=testing,dc=local
+member: uid=svc-gitlab-runner,ou=services,dc=testing,dc=local
+member: uid=svc-artifactory,ou=services,dc=testing,dc=local
+
+dn: cn=service-automation,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: service-automation
+description: Automation Service Accounts
+member: uid=svc-ansible,ou=services,dc=testing,dc=local
+member: uid=svc-terraform,ou=services,dc=testing,dc=local
+member: uid=svc-cron-jobs,ou=services,dc=testing,dc=local
+
+# ==========================================
+# SPECIAL PURPOSE GROUPS
+# ==========================================
+
+dn: cn=all-employees,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: all-employees
+description: All Company Employees
+member: uid=jdoe,ou=people,dc=testing,dc=local
+member: uid=jsmith,ou=people,dc=testing,dc=local
+member: uid=admin,ou=people,dc=testing,dc=local
+member: uid=testuser,ou=people,dc=testing,dc=local
+member: uid=bwilson,ou=people,dc=testing,dc=local
+member: uid=mjohnson,ou=people,dc=testing,dc=local
+member: uid=sdavis,ou=people,dc=testing,dc=local
+member: uid=tmartinez,ou=people,dc=testing,dc=local
+member: uid=aanderson,ou=people,dc=testing,dc=local
+member: uid=dthomas,ou=people,dc=testing,dc=local
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=rwhite,ou=people,dc=testing,dc=local
+member: uid=kharris,ou=people,dc=testing,dc=local
+member: uid=lmartin,ou=people,dc=testing,dc=local
+member: uid=jthompson,ou=people,dc=testing,dc=local
+member: uid=pgarcia,ou=people,dc=testing,dc=local
+member: uid=cmiller,ou=people,dc=testing,dc=local
+member: uid=swilson,ou=people,dc=testing,dc=local
+member: uid=rmoore,ou=people,dc=testing,dc=local
+member: uid=ntaylor,ou=people,dc=testing,dc=local
+member: uid=banderson,ou=people,dc=testing,dc=local
+member: uid=amartin,ou=people,dc=testing,dc=local
+member: uid=jlee,ou=people,dc=testing,dc=local
+member: uid=mperez,ou=people,dc=testing,dc=local
+member: uid=drobinson,ou=people,dc=testing,dc=local
+member: uid=jclark,ou=people,dc=testing,dc=local
+member: uid=erodriguez,ou=people,dc=testing,dc=local
+member: uid=slewis,ou=people,dc=testing,dc=local
+member: uid=kwalker,ou=people,dc=testing,dc=local
+member: uid=dhall,ou=people,dc=testing,dc=local
+member: uid=tyoung,ou=people,dc=testing,dc=local
+member: uid=cking,ou=people,dc=testing,dc=local
+member: uid=gwright,ou=people,dc=testing,dc=local
+member: uid=llopez,ou=people,dc=testing,dc=local
+
+dn: cn=remote-workers,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: remote-workers
+description: Remote Workers Group
+member: uid=ejackson,ou=people,dc=testing,dc=local
+member: uid=banderson,ou=people,dc=testing,dc=local
+member: uid=amartin,ou=people,dc=testing,dc=local
+
+dn: cn=onboarding,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: onboarding
+description: New Employees in Onboarding
+member: uid=testuser,ou=people,dc=testing,dc=local
+
+dn: cn=alumni,ou=groups,dc=testing,dc=local
+objectClass: groupOfNames
+objectClass: top
+cn: alumni
+description: Former Employees (Alumni)
+member: uid=testuser,ou=people,dc=testing,dc=local
